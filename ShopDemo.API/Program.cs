@@ -1,5 +1,15 @@
+using System.Reflection;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using ShopDemo.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ApplicationDbContext>(option =>
+{
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 // Add services to the container.
 
 builder.Services.AddControllers();
