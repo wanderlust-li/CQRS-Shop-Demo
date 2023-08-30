@@ -1,10 +1,11 @@
 using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ShopDemo.API.Data;
+using ShopDemo.Infrastructure.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+// builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

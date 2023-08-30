@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ShopDemo.API.Migrations
+namespace ShopDemo.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addProductTable : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,4 +1,4 @@
-﻿namespace ShopDemo.API.Models;
+﻿namespace ShopDemo.Domain.Entities;
 
 public class Product
 {

@@ -1,11 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopDemo.API.Models;
+using ShopDemo.Domain.Entities;
 
-namespace ShopDemo.API.Data;
+namespace ShopDemo.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+        
+    }
+
+    public ApplicationDbContext()
     {
         
     }
@@ -14,6 +19,6 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
-    
+
     public DbSet<Product> Products { get; set; }
 }
