@@ -27,7 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
         
         <ProjectReference Include="..\ShopDemo.Infrastructure\ShopDemo.Infrastructure.csproj" />
         
