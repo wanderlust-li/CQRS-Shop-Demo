@@ -27,7 +27,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
         {
             await _db.CreateAsync(product);
 
-            return new { message = "Succesfuly created product" };
+            return product;
         }
         catch (Exception ex)
         {

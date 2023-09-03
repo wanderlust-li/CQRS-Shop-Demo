@@ -28,6 +28,8 @@
 
     <ItemGroup>
         
+        <ProjectReference Include="..\ShopDemo.Application\ShopDemo.Application.csproj" />
+        
         <ProjectReference Include="..\ShopDemo.Infrastructure\ShopDemo.Infrastructure.csproj" />
         
     </ItemGroup>
