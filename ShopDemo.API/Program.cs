@@ -1,6 +1,8 @@
 using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopDemo.Application;
+using ShopDemo.Application.Commands.Product;
 using ShopDemo.Application.Handlers.Product;
 using ShopDemo.Application.Repository;
 using ShopDemo.Application.Repository.IRepository;
@@ -16,8 +18,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IRequestHandler<CreateProductCommand, object>, CreateProductCommandHandler>();
 
-
+builder.Services.AddAutoMapper(typeof(MappingConfig).Assembly);
+// builder.Services.AddMediatR(typeof(CreateProductCommandHandler).Assembly);
 // Add services to the container.
 
 builder.Services.AddControllers();
