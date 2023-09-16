@@ -10,7 +10,6 @@ using ShopDemo.Infrastructure.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMediatR(typeof(CreateProductCommandHandler).Assembly);
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
@@ -18,10 +17,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddMediatR(typeof(CreateProductCommand).Assembly);
 builder.Services.AddScoped<IRequestHandler<CreateProductCommand, object>, CreateProductCommandHandler>();
 
+// builder.Services.AddScoped<IRequestHandler<CreateProductCommand, object>, CreateProductCommandHandler>();
+
 builder.Services.AddAutoMapper(typeof(MappingConfig).Assembly);
-// builder.Services.AddMediatR(typeof(CreateProductCommandHandler).Assembly);
 // Add services to the container.
 
 builder.Services.AddControllers();

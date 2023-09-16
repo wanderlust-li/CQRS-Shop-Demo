@@ -9,5 +9,7 @@ public class MappingConfig : Profile
     public MappingConfig()
     {
         CreateMap<CreateProductCommand, Product>();
+        
+        CreateMap<Product, CreateProductCommand>();
     }
 }

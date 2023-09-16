@@ -11,10 +11,12 @@ namespace ShopDemo.API.Controllers;
 public class ProductController : Controller
 {
     private readonly IMediator _mediator;
+    private readonly ILogger<ProductController> _logger;
 
-    public ProductController(IMediator mediator)
+    public ProductController(IMediator mediator, ILogger<ProductController> logger)
     {
         _mediator = mediator;
+        _logger = logger;
     }
     
     [HttpPost]
@@ -22,12 +24,17 @@ public class ProductController : Controller
     {
         try
         {
+            _logger.LogInformation("Attempting to create a new product: {ProductName}", command.Name);
+
             var result = await _mediator.Send(command);
+                
+            _logger.LogInformation("Product created successfully: {ProductName}", command.Name);
 
             return Ok(result);
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Error occurred while creating product: {ProductName}", command.Name);
             return BadRequest(ex.Message);
         }
     }
