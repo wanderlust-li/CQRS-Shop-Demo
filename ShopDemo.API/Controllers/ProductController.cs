@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ShopDemo.Application.Commands.Product;
+using ShopDemo.Application.Queries.Product;
 
 namespace ShopDemo.API.Controllers;
 
@@ -38,4 +39,21 @@ public class ProductController : Controller
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetProduct(int id)
+    {
+        try
+        {
+            var command = new GetProductByIdQuery { Id = id };
+            var product = await _mediator.Send(command);
+
+            return Ok(product);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    
 }
