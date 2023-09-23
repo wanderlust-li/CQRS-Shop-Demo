@@ -4,8 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using ShopDemo.Application;
 using ShopDemo.Application.Commands.Product;
 using ShopDemo.Application.Handlers.Product;
+using ShopDemo.Application.Queries.Product;
 using ShopDemo.Application.Repository;
 using ShopDemo.Application.Repository.IRepository;
+using ShopDemo.Domain.Entities;
 using ShopDemo.Infrastructure.Data;
 
 
@@ -17,7 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddMediatR(typeof(CreateProductCommand).Assembly);
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IRequestHandler<GetProductByIdQuery, Product>, GetProductByIdQueryHandler>();
+
 builder.Services.AddScoped<IRequestHandler<CreateProductCommand, object>, CreateProductCommandHandler>();
 
 // builder.Services.AddScoped<IRequestHandler<CreateProductCommand, object>, CreateProductCommandHandler>();
