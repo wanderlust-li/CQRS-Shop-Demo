@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ShopDemo.Application;
 
-public class ApplicationServiceRegistration
+public static class ApplicationServiceRegistration
 {
-    public static IServiceCollection AddApplicationServices(IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(Assembly.GetExecutingAssembly());

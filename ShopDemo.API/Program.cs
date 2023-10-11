@@ -1,10 +1,14 @@
 using System.Reflection;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopDemo.Application;
+using ShopDemo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

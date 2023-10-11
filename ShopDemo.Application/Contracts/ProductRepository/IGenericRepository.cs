@@ -1,6 +1,6 @@
 ﻿using ShopDemo.Domain.Common;
 
-namespace ShopDemo.Application.Repository.ProductRepository;
+namespace ShopDemo.Application.Contracts.ProductRepository;
 
 public interface IGenericRepository<T> where T: BaseEntity
 {

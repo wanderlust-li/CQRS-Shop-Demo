@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ShopDemo.Application.Repository.ProductRepository;
+using ShopDemo.Application.Contracts.ProductRepository;
 using ShopDemo.Infrastructure.DatabaseContext;
 using ShopDemo.Infrastructure.Repositories;
 
 namespace ShopDemo.Infrastructure;
 
-public class InfrastructureServiceRegistration
+public static class InfrastructureServiceRegistration
 {
-    public static IServiceCollection AddInfrastructureServices(IServiceCollection services,
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDbContext<ShopDatabaseContext>(options => {

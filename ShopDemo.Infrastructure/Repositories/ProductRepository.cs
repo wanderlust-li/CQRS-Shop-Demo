@@ -1,4 +1,4 @@
-﻿using ShopDemo.Application.Repository.ProductRepository;
+﻿using ShopDemo.Application.Contracts.ProductRepository;
 using ShopDemo.Domain;
 
 namespace ShopDemo.Infrastructure.Repositories;
