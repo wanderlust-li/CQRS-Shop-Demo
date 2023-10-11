@@ -1,11 +1,9 @@
-﻿using MediatR;
+﻿using ShopDemo.Domain.Common;
 
-namespace ShopDemo.Application.Commands.Product;
+namespace ShopDemo.Domain;
 
-public class CreateProductCommand : IRequest<object>
+public class Product : BaseEntity
 {
-    // public int Id { get; set; }
-    
     public string Name { get; set; }
     
     public string Description { get; set; }
