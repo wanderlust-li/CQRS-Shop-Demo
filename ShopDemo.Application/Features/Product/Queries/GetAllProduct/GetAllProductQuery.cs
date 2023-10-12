@@ -1,6 +1,8 @@
-﻿namespace ShopDemo.Application.Features.Product.Queries.GetAllProduct;
+﻿using MediatR;
 
-public class GetAllProductQuery
+namespace ShopDemo.Application.Features.Product.Queries.GetAllProduct;
+
+public class GetAllProductQuery : IRequest<List<ProductDto>>
 {
     
 }

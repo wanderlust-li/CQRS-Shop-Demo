@@ -1,16 +1,21 @@
-using System.Reflection;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 using ShopDemo.Application;
 using ShopDemo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("all", builder => builder.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
