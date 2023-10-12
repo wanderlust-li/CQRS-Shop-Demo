@@ -1,32 +1,46 @@
-﻿using ShopDemo.Application.Contracts.ProductRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using ShopDemo.Application.Contracts.ProductRepository;
 using ShopDemo.Domain.Common;
+using ShopDemo.Infrastructure.DatabaseContext;
 
 namespace ShopDemo.Infrastructure.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
-    public Task<IReadOnlyList<T>> GetAsync()
+    protected readonly ShopDatabaseContext _context;
+
+    public GenericRepository(ShopDatabaseContext context)
     {
-        throw new NotImplementedException();
+        this._context = context;
+    }
+    
+    public async Task<IReadOnlyList<T>> GetAsync()
+    {
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
-    public Task<T> GetByIdAsync(int id)
+    public async Task<T> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Set<T>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(q => q.Id == id);
     }
 
-    public Task CreateAsync(T entity)
+    public async Task CreateAsync(T entity)
     {
-        throw new NotImplementedException();
+        await _context.AddAsync(entity);
+        await _context.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(T entity)
+    public async Task UpdateAsync(T entity)
     {
-        throw new NotImplementedException();
+        _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(T entity)
+    public async Task DeleteAsync(T entity)
     {
-        throw new NotImplementedException();
+        _context.Remove(entity);
+        await _context.SaveChangesAsync();
     }
 }

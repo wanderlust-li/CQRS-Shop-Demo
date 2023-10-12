@@ -1,37 +1,19 @@
-﻿using ShopDemo.Application.Contracts.ProductRepository;
+﻿using Microsoft.EntityFrameworkCore;
+using ShopDemo.Application.Contracts.ProductRepository;
 using ShopDemo.Domain;
+using ShopDemo.Infrastructure.DatabaseContext;
 
 namespace ShopDemo.Infrastructure.Repositories;
 
-public class ProductRepository : IProductRepository
+public class ProductRepository : GenericRepository<Product>, IProductRepository
 {
-    public Task<IReadOnlyList<Product>> GetAsync()
+    public ProductRepository(ShopDatabaseContext context) : base(context)
     {
-        throw new NotImplementedException();
+        
     }
 
-    public Task<Product> GetByIdAsync(int id)
+    public async Task<bool> IsLeaveTypeUnique(string name)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task CreateAsync(Product entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateAsync(Product entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteAsync(Product entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> IsLeaveTypeUnique(string name)
-    {
-        throw new NotImplementedException();
+        return await _context.Products.AnyAsync(u => u.Name == name) == false;
     }
 }
