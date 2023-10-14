@@ -22,7 +22,7 @@ namespace ShopDemo.API.Controllers
         }
         
         [HttpGet]
-        public async Task<List<ProductDto>> Get()
+        public async Task<List<ProductAllDto>> Get()
         {
             var leaveTypes = await _mediator.Send(new GetAllProductQuery());
             return leaveTypes;

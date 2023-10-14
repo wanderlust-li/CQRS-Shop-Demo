@@ -4,7 +4,7 @@ using ShopDemo.Application.Contracts.ProductRepository;
 
 namespace ShopDemo.Application.Features.Product.Queries.GetAllProduct;
 
-public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, List<ProductDto>>
+public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, List<ProductAllDto>>
 {
     private readonly IMapper _mapper;
     private readonly IProductRepository _productRepository;
@@ -15,11 +15,11 @@ public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, Lis
         this._productRepository = productRepository;
     }
 
-    public async Task<List<ProductDto>> Handle(GetAllProductQuery request, CancellationToken cancellationToken)
+    public async Task<List<ProductAllDto>> Handle(GetAllProductQuery request, CancellationToken cancellationToken)
     {
         var products = await _productRepository.GetAsync();
 
-        var data = _mapper.Map<List<ProductDto>>(products);
+        var data = _mapper.Map<List<ProductAllDto>>(products);
 
         return data;
     }

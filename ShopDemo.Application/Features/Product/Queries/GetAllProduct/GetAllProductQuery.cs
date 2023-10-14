@@ -2,7 +2,7 @@
 
 namespace ShopDemo.Application.Features.Product.Queries.GetAllProduct;
 
-public class GetAllProductQuery : IRequest<List<ProductDto>>
+public class GetAllProductQuery : IRequest<List<ProductAllDto>>
 {
     
 }

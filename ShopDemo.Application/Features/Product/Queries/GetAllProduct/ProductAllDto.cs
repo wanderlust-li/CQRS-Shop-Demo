@@ -1,6 +1,6 @@
 ﻿namespace ShopDemo.Application.Features.Product.Queries.GetAllProduct;
 
-public class ProductDto
+public class ProductAllDto
 {
     public int Id { get; set; }
     
