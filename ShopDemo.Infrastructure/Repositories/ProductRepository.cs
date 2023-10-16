@@ -12,7 +12,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
         
     }
 
-    public async Task<bool> IsLeaveTypeUnique(string name)
+    public async Task<bool> IsProductNameUnique(string name)
     {
         return await _context.Products.AnyAsync(u => u.Name == name) == false;
     }

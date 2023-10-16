@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using ShopDemo.Application.Contracts.ProductRepository;
+using ShopDemo.Application.Exceptions;
 
 namespace ShopDemo.Application.Features.Product.Commands.CreateProduct;
 
@@ -17,6 +18,13 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand,
 
     public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
+        var validator = new CreateProductCommandValidator(_productRepository);
+        var validationResult = await validator.ValidateAsync(request);
+
+        if (validationResult.Errors.Any())
+            throw new BadRequestException("Invalid Product", validationResult);
+
+        
         var createProduct = _mapper.Map<Domain.Product>(request);
         await _productRepository.CreateAsync(createProduct);
 
