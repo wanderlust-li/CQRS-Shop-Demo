@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopDemo.Application.Features.Product.Queries.GetAllProduct;
+using ShopDemo.Application.Features.Product.Queries.GetProduct;
 
 
 namespace ShopDemo.API.Controllers
@@ -24,8 +25,15 @@ namespace ShopDemo.API.Controllers
         [HttpGet]
         public async Task<List<ProductAllDto>> Get()
         {
-            var leaveTypes = await _mediator.Send(new GetAllProductQuery());
-            return leaveTypes;
+            var productAll = await _mediator.Send(new GetAllProductQuery());
+            return productAll;
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDto>> Get(int id)
+        {
+            var product = await _mediator.Send(new GetProductQuery(id));
+            return product;
         }
       
     }
