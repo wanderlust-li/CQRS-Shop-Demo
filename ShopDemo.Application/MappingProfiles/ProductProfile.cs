@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ShopDemo.Application.Features.Product.Commands.CreateProduct;
 using ShopDemo.Application.Features.Product.Queries.GetAllProduct;
 using ShopDemo.Application.Features.Product.Queries.GetProduct;
 using ShopDemo.Domain;
@@ -11,5 +12,6 @@ public class ProductProfile : Profile
     {
         CreateMap<ProductAllDto, Product>().ReverseMap();
         CreateMap<ProductDto, Product>().ReverseMap();
+        CreateMap<CreateProductCommand, Product>();
     }
 }
