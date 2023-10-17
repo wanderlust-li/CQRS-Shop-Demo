@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using ShopDemo.Application.Contracts.ProductRepository;
+using ShopDemo.Application.Exceptions;
 
 namespace ShopDemo.Application.Features.Product.Queries.GetProduct;
 
@@ -19,10 +20,10 @@ public class GetProductQueryHandler : IRequestHandler<GetProductQuery, ProductDt
     {
         var product = await _productRepository.GetByIdAsync(request.Id);
 
-        // if (product == null)
-        // {
-        //     throw new NotFoundException(nameof(Domain.Product), request.Id);
-        // }
+        if (product == null)
+        {
+            throw new NotFoundException(nameof(Domain.Product), request.Id);
+        }
 
         var data = _mapper.Map<ProductDto>(product);
 
