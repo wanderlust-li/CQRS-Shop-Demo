@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ShopDemo.Infrastructure.Models;
+namespace ShopDemo.Identity.Models;
 
 public class ApplicationUser : IdentityUser
 {

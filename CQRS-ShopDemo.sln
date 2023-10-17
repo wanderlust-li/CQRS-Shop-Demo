@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDemo.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDemo.API", "ShopDemo.API\ShopDemo.API.csproj", "{7CD2049E-F03B-4E29-91D5-47F8F353AB15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDemo.Identity", "ShopDemo.Identity\ShopDemo.Identity.csproj", "{FA58B79B-9702-44FE-9007-AE39CD6662D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{7CD2049E-F03B-4E29-91D5-47F8F353AB15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CD2049E-F03B-4E29-91D5-47F8F353AB15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CD2049E-F03B-4E29-91D5-47F8F353AB15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA58B79B-9702-44FE-9007-AE39CD6662D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA58B79B-9702-44FE-9007-AE39CD6662D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA58B79B-9702-44FE-9007-AE39CD6662D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA58B79B-9702-44FE-9007-AE39CD6662D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

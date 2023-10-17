@@ -6,15 +6,23 @@ using Microsoft.IdentityModel.Tokens;
 using ShopDemo.Application.Contracts.Identity;
 using ShopDemo.Application.Exceptions;
 using ShopDemo.Application.Models.Identity;
-using ShopDemo.Infrastructure.Models;
+using ShopDemo.Identity.Models;
 
-namespace ShopDemo.Infrastructure.Services;
+namespace ShopDemo.Identity.Services;
 
 public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly JwtSettings _jwtSettings;
+
+    public AuthService(UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager, JwtSettings jwtSettings)
+    {
+        _userManager = userManager;
+        _jwtSettings = jwtSettings;
+        _signInManager = signInManager;
+    }
 
     public async Task<AuthResponse> Login(AuthRequest request)
     {
@@ -74,7 +82,7 @@ public class AuthService : IAuthService
             throw new BadRequestException($"{str}");
         }
     }
-    
+
     private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
     {
         var userClaims = await _userManager.GetClaimsAsync(user);
