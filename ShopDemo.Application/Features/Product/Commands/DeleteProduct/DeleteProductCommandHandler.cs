@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using ShopDemo.Application.Contracts.ProductRepository;
+using ShopDemo.Application.Exceptions;
 
 namespace ShopDemo.Application.Features.Product.Commands.DeleteProduct;
 
@@ -16,6 +17,11 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand,
     public async Task<Unit> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
     {
         var product = await _productRepository.GetByIdAsync(request.Id);
+
+        if (product == null)
+        {
+            throw new NotFoundException(nameof(Domain.Product), request.Id);
+        }
 
         await _productRepository.DeleteAsync(product);
 
