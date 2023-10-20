@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ShopDemo.Application.Contracts.Identity;
 using ShopDemo.Application.Exceptions;
@@ -12,17 +13,19 @@ namespace ShopDemo.Identity.Services;
 
 public class AuthService : IAuthService
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly JwtSettings _jwtSettings;
 
     public AuthService(UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager, JwtSettings jwtSettings)
+        IOptions<JwtSettings> jwtSettings,
+        SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
-        _jwtSettings = jwtSettings;
+        _jwtSettings = jwtSettings.Value;
         _signInManager = signInManager;
     }
+
 
     public async Task<AuthResponse> Login(AuthRequest request)
     {
@@ -52,6 +55,7 @@ public class AuthService : IAuthService
 
         return response;
     }
+
 
     public async Task<RegistrationResponse> Register(RegistrationRequest request)
     {

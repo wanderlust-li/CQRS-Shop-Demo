@@ -6,11 +6,11 @@ namespace ShopDemo.Identity.DbContext;
 
 public class ShopDemoIdentityDbContext : IdentityDbContext<ApplicationUser>
 {
-    public ShopDemoIdentityDbContext(DbContextOptions<ShopDemoIdentityDbContext> options) : base(options)
+    public ShopDemoIdentityDbContext(DbContextOptions<ShopDemoIdentityDbContext> options)
+        : base(options)
     {
-        
     }
-    
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
