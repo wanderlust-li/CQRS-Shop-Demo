@@ -14,18 +14,6 @@ public class UserService : IUserService
         _userManager = userManager;
     }
 
-    public async Task<List<Employee>> GetEmployees()
-    {
-        var employees = await _userManager.GetUsersInRoleAsync("Employee");
-        return employees.Select(q => new Employee
-        {
-            Id = q.Id,
-            Email = q.Email,
-            Firstname = q.FirstName,
-            Lastname = q.LastName
-        }).ToList();
-    }
-
     public async Task<Employee> GetEmployee(string userId)
     {
         var employee = await _userManager.FindByIdAsync(userId);
@@ -36,5 +24,17 @@ public class UserService : IUserService
             Firstname = employee.FirstName,
             Lastname = employee.LastName
         };
+    }
+
+    public async Task<List<Employee>> GetEmployees()
+    {
+        var employees = await _userManager.GetUsersInRoleAsync("Employee");
+        return employees.Select(q => new Employee
+        {
+            Id = q.Id,
+            Email = q.Email,
+            Firstname = q.FirstName,
+            Lastname = q.LastName
+        }).ToList();
     }
 }
