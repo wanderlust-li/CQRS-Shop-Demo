@@ -2,7 +2,10 @@
 
 ## 🚀 Introduction
 
-Welcome to `CQRS-Shop-Demo`, an e-commerce solution for product management that utilizes CQRS (Command Query Responsibility Segregation) for managing and viewing products.
+`CQRS-Shop-Demo` is an e-commerce solution that leverages CQRS (Command Query Responsibility Segregation) for streamlined product management and viewing.
+
+## Give a Star! :star:
+If you liked the project, please give a star ;)
 
 ## 🔑 Features
 
@@ -17,16 +20,22 @@ Welcome to `CQRS-Shop-Demo`, an e-commerce solution for product management that 
 1. **View All Products**: Browse through the entire inventory.
 2. **Find Product by ID**: Retrieve a product using its unique identifier.
 
+## 🏗️ Technologies implemented
 
-## 🏗️ Technologies
-
-- ASP.NET Core Web API
+- ASP.NET 7.0
+- ASP.NET WebApi Core with JWT Bearer Authentication
+- Entity Framework Core 7.0
+- AutoMapper
+- FluentValidator
 - MediatR
-- CQRS
-- Clean Architecture
-- Entity Framework
-- .NET 7.0
-- Fluent Validation
+- Swagger UI with JWT support
+
+## 🏛️ Architecture:
+
+- Full architecture with responsibility separation concerns, SOLID and Clean Code
+- Domain Validations
+- CQRS (Imediate Consistency)
+- Repository
 
 ### 📧 Contact
 
